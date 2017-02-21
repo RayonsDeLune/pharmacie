@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ recette.titre }}</h1>
+
+
+    {{ recette.description }}
+    <br/><br/>
+    <h2>Produits :</h2>
+    {% for posologieAct in recette.posologies %}
+        <a href="{{ path('detailProduit', {id:posologieAct.produit.id}) }}" alt="{{ posologieAct.produit.description }}">{{ posologieAct.produit.nom }}</a>
+    {% endfor %} 
+   <br/><br/>
+    <h2>Symptomes :</h2>
+    {% for sympAct in recette.symptomes %}
+        {{ sympAct.intitule }}
+    {% endfor %}
+
+
+{% endblock %}

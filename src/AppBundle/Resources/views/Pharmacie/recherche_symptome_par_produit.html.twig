@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Pharmacie:rechercheSymptomeParProduit{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Pharmacie:rechercheSymptomeParProduit page</h1>
+
+    {{form(monForm)}}
+
+    {%for symptome in mesSymptomes %}
+        {{ symptome.intitule }}
+        <br>
+    {%endfor%}
+{% endblock %}

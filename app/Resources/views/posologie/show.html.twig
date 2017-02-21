@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Posologie</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ posologie.id }}</td>
+            </tr>
+            <tr>
+                <th>Posologie</th>
+                <td>{{ posologie.posologie }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('posologie_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('posologie_edit', { 'id': posologie.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

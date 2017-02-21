@@ -1,0 +1,20 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Pharmacie:listeDernieresRecettes{% endblock %}
+
+{% block body %}
+    <h1>{{titre}}</h1>
+    <div>
+        {%if nbPages>1%}
+        {%for indicePage in 0..nbPages-1  %}
+            <a href="{{path("listeDernieresRecettes", {page:indicePage})}}"> Page {{indicePage+1}}</a>
+        {%endfor%}
+        {%endif%}
+    </div>
+
+    {%for recAct in mesRecettes %}
+        <a href="{{ path('detailRecette', {id:recAct.id}) }}" alt="{{ recAct.description }}">{{ recAct.titre }}</a>
+        <br>
+    {%endfor%}
+
+{% endblock %}

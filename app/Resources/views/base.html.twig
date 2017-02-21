@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+    {% if (app.session.get("user")) %}
+        Bienvenue {{app.session.get("user").login}} !
+        <a href="{{ path('deconnexion') }}">deconnexion</a>
+        <br>
+        <a href="{{ path('recettePosologie') }}">Saisir une nouvelle recette</a>
+
+    {% else %}
+        <a href="{{ path('inscription') }}">inscription</a>
+        <a href="{{ path('login') }}">connexion</a>
+        <br>
+    {%endif%}
+
+    <a href="{{ path('listeDernieresRecettes') }}">liste des dernieres recettes</a>
+    <a href="{{ path('listeDerniersProduits') }}">liste des derniers produits</a>
+    <br>
+    <a href="{{ path('rechercheRecetteParSymptomeProduit') }}">Recherche recette par symptomes et produits</a>
+    <a href="{{ path('rechercheProduitParSymptomeCategorie') }}">Recherche produit par symptomes et categories</a>
+    <a href="{{ path('rechercheSymptomeParProduit') }}">Recherche symptomes par produits</a>
+
+    {% if (app.session.get("admin")) %}
+        <br>
+        <a href="{{ path('recette_index') }}">Valider les recettes</a>
+        <a href="{{ path('produit_index') }}">Liste des produits</a>
+        <a href="{{ path('categorie_index') }}">Liste des catégories</a>
+        <a href="{{ path('symptome_index') }}">Liste des symptomes</a>
+    {%endif%}
+
+    {% block body %}
+    {% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>

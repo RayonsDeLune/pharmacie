@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Pharmacie:rechercheProduitParSymptomeCategorie{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Pharmacie:rechercheProduitParSymptomeCategorie page</h1>
+
+{{form(monForm)}}
+
+{%for produit in mesProduits %}
+        <a href="{{ path('detailProduit', {id:produit.id}) }}" alt="{{ produit.description }}">{{ produit.nom }}</a>
+        <br>
+    {%endfor%}
+    
+{% endblock %}

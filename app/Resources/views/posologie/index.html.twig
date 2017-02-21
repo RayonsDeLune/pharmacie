@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Posologies list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Posologie</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for posologie in posologies %}
+            <tr>
+                <td><a href="{{ path('posologie_show', { 'id': posologie.id }) }}">{{ posologie.id }}</a></td>
+                <td>{{ posologie.posologie }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('posologie_show', { 'id': posologie.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('posologie_edit', { 'id': posologie.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('posologie_new') }}">Create a new posologie</a>
+        </li>
+    </ul>
+{% endblock %}

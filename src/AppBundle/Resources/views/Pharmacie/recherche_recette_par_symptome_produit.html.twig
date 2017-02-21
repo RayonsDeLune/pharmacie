@@ -1,0 +1,13 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Pharmacie:rechercheRecetteParSymptomeProduit{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Pharmacie:rechercheRecetteParSymptomeProduit page</h1>
+    {{form(monForm)}}
+
+    {%for recAct in mesRecettes %}
+        <a href="{{ path('detailRecette', {id:recAct.id}) }}" alt="{{ recAct.description }}">{{ recAct.titre }}</a>
+        <br>
+    {%endfor%}
+{% endblock %}

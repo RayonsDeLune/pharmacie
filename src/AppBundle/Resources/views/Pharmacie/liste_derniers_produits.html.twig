@@ -1,0 +1,12 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Pharmacie:listeDerniersProduits{% endblock %}
+
+{% block body %}
+ <h1>{{titre}}</h1>
+
+    {%for prodAct in mesProduits %}
+        <a href="{{ path('detailProduit', {id:prodAct.id}) }}" alt="{{ prodAct.description }}">{{ prodAct.nom }}</a>
+        <br>
+    {%endfor%}
+{% endblock %}
